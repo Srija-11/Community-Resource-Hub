@@ -13,7 +13,7 @@ export default function Footer() {
         <p className="social">
           <a href="#fb"></a> <a href="#tw"></a> <a href="#wa"></a>
         </p>
-        <p>1234 Elm St, Springfield, USA</p>
+        <p>1234 Elm St, Belur station, Bally</p>
       </div>
 
       <div>
