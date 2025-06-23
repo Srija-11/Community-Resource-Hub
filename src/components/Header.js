@@ -4,7 +4,7 @@ export default function Header() {
       <h1 className="logo">COMMUNITY EMERGENCY RESOURCE HUB</h1>
 
       <nav className="main-nav">
-        <a href="#sos">SOS & Maps</a>
+        <a href="#sos">SOS & Maps</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
