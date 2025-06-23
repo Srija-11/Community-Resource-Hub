@@ -17,12 +17,9 @@ export default function App() {
         <Card
           img="https://family-locator.com/content/homepage/sections/2-family-locator-app-keeps-your-family-secure-connected/sg_b2c_familyweb_videopic-1.png"
           title="Real‑Time SOS & Maps"
-        />
-        <card
-          img="https://static.vecteezy.com/system/resources/previews/029/927/235/non_2x/sos-emergency-call-911-calling-a-cry-for-help-stock-illustration-vector.jpg"
-          title="Real-Time SOS & Maps"
           desc="Safe zones · Shelters · Medical facilities"
           cta="View Locations"
+          
         />
         <Card
           img="https://static.vecteezy.com/system/resources/thumbnails/011/933/954/small/social-network-silhouette-icon-business-technology-community-world-company-black-pictogram-networking-hub-media-information-communication-icon-isolated-illustration-vector.jpg"
