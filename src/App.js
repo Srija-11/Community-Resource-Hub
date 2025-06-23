@@ -2,10 +2,13 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Card from './components/Card';
 import Footer from './components/Footer';
+import { Auth } from './components/auth';
 
 export default function App() {
   return (
     <div className="App">
+      <Auth />
+      <button></button>
       <Header />
 
       <Hero />
