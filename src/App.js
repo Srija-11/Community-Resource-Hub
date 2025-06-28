@@ -1,10 +1,27 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+
+import { auth } from './config/firebase';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import { Auth } from './components/auth';
-
+import { Signup } from './components/Signup';
+import ResourceForm from './components/Resourceform'; // ✅ Import the form
+import ResourceList from "./components/ResourceList"; // ✅ Import this at top
 export default function App() {
+  const [user, setUser] = useState(null);
+
+  // 🔐 Track user authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="App">
       <Auth />
@@ -15,11 +32,10 @@ export default function App() {
 
       <section className="card-grid">
         <Card
-          img="https://family-locator.com/content/homepage/sections/2-family-locator-app-keeps-your-family-secure-connected/sg_b2c_familyweb_videopic-1.png"
-          title="Real‑Time SOS & Maps"
+          img="https://static.vecteezy.com/system/resources/previews/029/927/235/non_2x/sos-emergency-call-911-calling-a-cry-for-help-stock-illustration-vector.jpg"
+          title="Real-Time SOS & Maps"
           desc="Safe zones · Shelters · Medical facilities"
           cta="View Locations"
-          
         />
         <Card
           img="https://static.vecteezy.com/system/resources/thumbnails/011/933/954/small/social-network-silhouette-icon-business-technology-community-world-company-black-pictogram-networking-hub-media-information-communication-icon-isolated-illustration-vector.jpg"

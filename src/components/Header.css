@@ -1,0 +1,44 @@
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Login / Signup Button */
+.login-btn {
+  /* background: #e6abab; */
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  color: #100101;
+  /* text-decoration: underline; */
+  margin-right: 10px;
+}
+
+.login-btn:hover {
+  text-decoration: none;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: none;
+  border: none;
+  color: #f00;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+

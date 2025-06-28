@@ -1,0 +1,101 @@
+/* Background wrapper */
+.login-container {
+  background: linear-gradient(to right, #b721ff, #21d4fd);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* White box */
+.login-box {
+  background: #f9d9d9;
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* Heading */
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input fields */
+.login-box input[type="email"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.login-box input:focus {
+  border-color: #21d4fd;
+  outline: none;
+}
+
+/* Remember me section */
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Main login button */
+.login-btn-in {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.login-btn:hover {
+  background-color: #c2185b;
+}
+
+/* Social login buttons */
+.google-btn {
+  border: none;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.google-btn {
+  background-color: #db4437;
+  color: white;
+}
+
+.google-btn:hover {
+  background-color: #c33d2e;
+}
+
+/* Link under form */
+.login-box a {
+  color: #b721ff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
+}
