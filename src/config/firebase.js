@@ -2,18 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"; // ✅ Needed for Firestore
-
-// ✅ Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyC_xvAfYsDejojk9Lp7KrWg_SQ-a58eF9s",
-  authDomain: "community-resource-hub.firebaseapp.com",
-  projectId: "community-resource-hub",
-  storageBucket: "community-resource-hub.firebasestorage.app",
-  messagingSenderId: "152459414724",
-  appId: "1:152459414724:web:83cf65cfb03deb79368d91",
-  measurementId: "G-5NFKX2TH4K"
+  apiKey: "AIzaSyAKxLVLgy4T3iE7rRBv6Yc4LJKYdCwmyQo",
+  authDomain: "community-resource-27355.firebaseapp.com",
+  projectId: "community-resource-27355",
+  storageBucket: "community-resource-27355.firebasestorage.app",
+  messagingSenderId: "976853412914",
+  appId: "1:976853412914:web:ce054d93bae0eb2474a02b",
+  measurementId: "G-K6HKX63NFN"
 };
-
 // ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
