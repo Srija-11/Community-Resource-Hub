@@ -91,7 +91,7 @@ html,
   display: flex;
   flex-direction: column;
   background: var(--light);
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .card img {
