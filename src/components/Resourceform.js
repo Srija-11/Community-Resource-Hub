@@ -36,7 +36,7 @@ export default function ResourceForm() {
       navigate("/resources/view"); // 👈 redirect to view list
     } catch (err) {
       console.error("Error adding resource:", err);
-      alert("Failed to submit. Try again.");
+      alert("You must be logged in to submit resources.");
     }
   };
 
