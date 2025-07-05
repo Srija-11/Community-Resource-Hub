@@ -11,6 +11,9 @@ import { Auth } from './components/auth';
 import { Signup } from './components/Signup';
 import ResourceForm from './components/Resourceform';
 import ResourceList from './components/ResourceList';
+import WeatherAlert from './components/WeatherAlert';
+import EmergencyInfo from './components/EmergencyInfo';
+import DisasterNews from './components/DisasterNews';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -62,6 +65,8 @@ export default function App() {
                   desc="Government & host updates"
                   cta="Get Updates"
                   link="/alerts"
+                  ctaanother="Emergency Updates"
+                  linkanother="/updates"
                 />
 
                 {/* Card 4: Community Support */}
@@ -87,7 +92,18 @@ export default function App() {
         <Route path="/resources/new" element={<ResourceForm />} />
         <Route path="/resources/view" element={<ResourceList />} />
 
-        {/* 🔜 Add more routes as needed */}
+               {/* ⚠️ Emergency Info – Weather Alert Page */}
+        <Route
+          path="/alerts"
+          element={
+            <>
+              <WeatherAlert />
+              <DisasterNews />
+            </>
+          }
+        />
+        <Route path="/updates" element={<EmergencyInfo />} />
+
       </Routes>
     </Router>
   );

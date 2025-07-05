@@ -83,9 +83,7 @@ export default function ResourceForm() {
           onChange={(e) => setQuantity(e.target.value)}
           placeholder="e.g. 10 tablets, 2kg rice"
         />
-
         <br /><br />
-
         <button type="submit" style={{ padding: "0.6rem 1.5rem", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px" }}>
           Submit
         </button>

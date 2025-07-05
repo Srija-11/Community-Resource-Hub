@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 export const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
   const navigate = useNavigate();
 
   const signIn = async () => {
@@ -52,7 +53,9 @@ export const Auth = () => {
 
         {/* Login & Signup buttons side-by-side */}
          <div className="remember-me">
-          <input type="checkbox" /> Remember me
+          <input type="checkbox"
+          checked={remember} 
+          onChange={(e) => setRemember(e.target.checked)}/> Remember me
         </div>
         <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
           <button className="login-btn-in" onClick={signIn}>
