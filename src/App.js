@@ -11,7 +11,6 @@ import { Auth } from './components/auth';
 import { Signup } from './components/Signup';
 import ResourceForm from './components/Resourceform';
 import ResourceList from './components/ResourceList';
-<<<<<<< Updated upstream
 import WeatherAlert from './components/WeatherAlert';
 import EmergencyInfo from './components/EmergencyInfo';
 import DisasterNews from './components/DisasterNews';
@@ -24,10 +23,6 @@ import DamageReportForm from './components/DamageReportForm';
 import VerifiedRepairServices from './components/VerifiedRepairServices';
 import RecoveryDirectory from './components/RecoveryDirectory';
 import InsuranceHelp from './components/InsuranceHelp';
-=======
-import SOSForm from './components/SOSForm';       // 🆕 Added
-import SOSMap from './components/SOSMap';         // 🆕 Added
->>>>>>> Stashed changes
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -55,8 +50,6 @@ export default function App() {
                   desc="Safe zones · Shelters · Medical facilities"
                   cta="View Locations"
                   link="/sos/map"
-                  ctaanother="Submit SOS"
-                  linkanother="/sos/new"
                 />
                 <Card
                   img="https://static.vecteezy.com/system/resources/thumbnails/011/933/954/small/social-network-silhouette-icon-business-technology-community-world-company-black-pictogram-networking-hub-media-information-communication-icon-isolated-illustration-vector.jpg"
@@ -113,7 +106,6 @@ export default function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/signup" element={<Signup />} />
 
-<<<<<<< Updated upstream
         {/* Resource System */}
         <Route path="/resources/new" element={<ResourceForm />} />
         <Route path="/resources/view" element={<ResourceList />} />
@@ -145,15 +137,6 @@ export default function App() {
 
         {/* SOS Placeholder */}
         <Route path="/sos/map" element={<div><h3>SOS Map Coming Soon</h3></div>} />
-=======
-        {/* 💾 Resource Matching */}
-        <Route path="/resources/new" element={<ResourceForm />} />
-        <Route path="/resources/view" element={<ResourceList />} />
-
-        {/* 🆘 SOS System */}
-        <Route path="/sos/new" element={<SOSForm />} />
-        <Route path="/sos/map" element={<SOSMap />} />
->>>>>>> Stashed changes
       </Routes>
     </Router>
   );

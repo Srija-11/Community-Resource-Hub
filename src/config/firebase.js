@@ -1,11 +1,10 @@
 // src/config/firebase.js
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-// ✅ Your Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCjYuY7p_SxSyWzBZFcwpf-w2uaFcNQ6tU",
   authDomain: "community-d02e6.firebaseapp.com",
@@ -16,23 +15,15 @@ const firebaseConfig = {
   measurementId: "G-M77BR3Z6J4"
 };
 
-// ✅ Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-<<<<<<< Updated upstream
-// ✅ Services
-const db = getFirestore(app);
+// Auth, Firestore, Storage
 const auth = getAuth(app);
+const db = getFirestore(app);
 const storage = getStorage(app);
 
-// ✅ Google Auth Provider
+// Google Auth Provider
 const googleProvider = new GoogleAuthProvider();
 
-// ✅ Export
 export { auth, db, storage, googleProvider };
-=======
-// ✅ Export Firebase tools
-export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
-export const db = getFirestore(app); // ✅ This is required for Firestore access
->>>>>>> Stashed changes
