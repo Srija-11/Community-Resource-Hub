@@ -19,6 +19,7 @@ const firebaseConfig = {
 // ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+<<<<<<< Updated upstream
 // ✅ Services
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -29,3 +30,9 @@ const googleProvider = new GoogleAuthProvider();
 
 // ✅ Export
 export { auth, db, storage, googleProvider };
+=======
+// ✅ Export Firebase tools
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app); // ✅ This is required for Firestore access
+>>>>>>> Stashed changes
