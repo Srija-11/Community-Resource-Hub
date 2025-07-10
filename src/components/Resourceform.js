@@ -1,91 +1,129 @@
-import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { auth, db } from "../config/firebase"; // adjust path if needed
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { db } from '../config/firebase';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
-export default function ResourceForm() {
-  const [type, setType] = useState("");
-  const [action, setAction] = useState("Need");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const navigate = useNavigate();
+export default function DamageReportForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    contact: '',
+    location: '',
+    type: '',
+    description: '',
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!type || !description) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
     try {
-      await addDoc(collection(db, "resources"), {
-        userId: auth.currentUser?.uid || "anonymous",
-        type,
-        action,
-        description,
-        quantity,
-        timestamp: new Date().toISOString(),
+      await addDoc(collection(db, 'damageReports'), {
+        ...formData,
+        timestamp: Timestamp.now()
       });
-
-      alert("Resource info submitted successfully!");
-      setType("");
-      setAction("Need");
-      setDescription("");
-      setQuantity("");
-      navigate("/resources/view"); // 👈 redirect to view list
+      setSubmitted(true);
+      alert('✅ Damage report submitted successfully!');
+      setFormData({
+        name: '',
+        contact: '',
+        location: '',
+        type: '',
+        description: '',
+      });
     } catch (err) {
-      console.error("Error adding resource:", err);
-      alert("You must be logged in to submit resources.");
+      console.error('Error submitting damage report:', err);
+      alert('❌ Failed to submit report.');
     }
   };
 
   return (
-    <div className="form-container" style={{ maxWidth: "500px", margin: "2rem auto", padding: "1.5rem", border: "1px solid #ccc", borderRadius: "8px" }}>
-      <h2>Find or Offer Resources</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Resource Type*</label>
-        <select value={type} onChange={(e) => setType(e.target.value)} required>
-          <option value="">-- Select --</option>
-          <option value="Water">Water</option>
-          <option value="Food">Food</option>
-          <option value="Medicine">Medicine</option>
-          <option value="Shelter">Shelter</option>
-          <option value="Electricity">Electricity</option>
-          <option value="Other">Other</option>
-        </select>
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        🛠️ Report Damage
+      </h2>
 
-        <br /><br />
+      {submitted && (
+        <div className="text-green-600 text-center font-medium mb-4">
+          ✅ Report submitted successfully!
+        </div>
+      )}
 
-        <label>Action*</label>
-        <select value={action} onChange={(e) => setAction(e.target.value)}>
-          <option value="Need">Need</option>
-          <option value="Offer">Offer</option>
-        </select>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label className="block text-gray-700 mb-1">Your Name*</label>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <br /><br />
+        <div>
+          <label className="block text-gray-700 mb-1">Contact Info*</label>
+          <input
+            name="contact"
+            value={formData.contact}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <label>Description*</label>
-        <textarea
-          rows={3}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="e.g. Need 5 liters of clean water"
-          required
-        />
+        <div>
+          <label className="block text-gray-700 mb-1">Location of Damage*</label>
+          <input
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <br /><br />
+        <div>
+          <label className="block text-gray-700 mb-1">Type of Damage*</label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">-- Select Type --</option>
+            <option value="property">Property</option>
+            <option value="agriculture">Agriculture</option>
+            <option value="infrastructure">Infrastructure</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
 
-        <label>Quantity (optional)</label>
-        <input
-          type="text"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-          placeholder="e.g. 10 tablets, 2kg rice"
-        />
-        <br /><br />
-        <button type="submit" style={{ padding: "0.6rem 1.5rem", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "4px" }}>
-          Submit
+        <div>
+          <label className="block text-gray-700 mb-1">Description*</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows={4}
+            required
+            placeholder="Describe the nature and extent of damage..."
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+        >
+          📤 Submit Report
         </button>
       </form>
     </div>

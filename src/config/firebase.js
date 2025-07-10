@@ -1,29 +1,25 @@
 // src/config/firebase.js
 
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage"; // ✅ Needed for EmergencyDocs
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCjYuY7p_SxSyWzBZFcwpf-w2uaFcNQ6tU",
-  authDomain: "community-d02e6.firebaseapp.com",
-  projectId: "community-d02e6",
-  storageBucket: "community-d02e6.appspot.com",
-  messagingSenderId: "819740624276",
-  appId: "1:819740624276:web:199cde159b27650ea13b81",
-  measurementId: "G-M77BR3Z6J4"
+  apiKey: "AIzaSyAKxLVLgy4T3iE7rRBv6Yc4LJKYdCwmyQo",
+  authDomain: "community-resource-27355.firebaseapp.com",
+  projectId: "community-resource-27355",
+  storageBucket: "community-resource-27355.appspot.com", // ✅ FIXED (was .app)
+  messagingSenderId: "976853412914",
+  appId: "1:976853412914:web:ce054d93bae0eb2474a02b",
+  measurementId: "G-K6HKX63NFN"
 };
 
-// Initialize Firebase
+// ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Auth, Firestore, Storage
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
-
-// Google Auth Provider
-const googleProvider = new GoogleAuthProvider();
-
-export { auth, db, storage, googleProvider };
+// ✅ Firebase Services
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
+export const storage = getStorage(app); // ✅ For file upload

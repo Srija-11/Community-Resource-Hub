@@ -1,18 +1,13 @@
+// src/components/Auth.js
+import React, { useState } from "react";
 import { auth, googleProvider } from "../config/firebase";
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
-import { useState } from "react";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
-
-
+import { Link } from "react-router-dom";
 
 export const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(true);
   const navigate = useNavigate();
 
   const signIn = async () => {
@@ -30,7 +25,7 @@ export const Auth = () => {
       await signInWithPopup(auth, googleProvider);
       navigate("/");
     } catch (err) {
-      console.error("Google Auth Error:", err.message);
+      console.error("Google Sign-In Error:", err.message);
       alert(err.message);
     }
   };
@@ -38,7 +33,7 @@ export const Auth = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login / Signup</h2>
+        <h2>Login</h2>
 
         <input
           type="email"
@@ -51,23 +46,12 @@ export const Auth = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {/* Login & Signup buttons side-by-side */}
-         <div className="remember-me">
-          <input type="checkbox"
-          checked={remember} 
-          onChange={(e) => setRemember(e.target.checked)}/> Remember me
-        </div>
-        <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
-          <button className="login-btn-in" onClick={signIn}>
-            Login
-          </button>
-        </div>
-        
-        <p style={{ margin: "20px 0 10px" }}>or Sign In with</p>
+        <button onClick={signIn} className="login-btn-in">Login</button>
 
-        <button className="google-btn" onClick={handleGoogleAuth}>
-          Google
-        </button>
+        <p>or</p>
+
+        <button onClick={handleGoogleAuth} className="google-btn">Login with Google</button>
+
         <p>Not a member? <Link to="/signup">Sign up now</Link></p>
       </div>
     </div>
