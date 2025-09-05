@@ -78,7 +78,7 @@ export default function ResourceForm() {
 
         <label>Quantity (optional)</label>
         <input
-          type="text"
+          type="number"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
           placeholder="e.g. 10 tablets, 2kg rice"

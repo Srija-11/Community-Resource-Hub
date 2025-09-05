@@ -1,3 +1,4 @@
+// src/components/WeatherAlert.jsx
 import React, { useEffect, useState } from "react";
 
 export default function WeatherAlert() {
@@ -9,16 +10,14 @@ export default function WeatherAlert() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Translate given text into a language
+  // Translate text using Google Translate API
   const translateText = async (text, targetLang) => {
     try {
       const res = await fetch(
         `https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_TRANSLATE_API_KEY}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             q: text,
             target: targetLang,
@@ -39,8 +38,8 @@ export default function WeatherAlert() {
       async (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-
         const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+
         const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,daily&appid=${apiKey}`;
 
         try {
@@ -51,7 +50,7 @@ export default function WeatherAlert() {
             const firstAlert = data.alerts[0];
             setAlert(firstAlert);
 
-            // Translate to both Hindi and Bengali
+            // Translate the alert description
             const hi = await translateText(firstAlert.description, "hi");
             const bn = await translateText(firstAlert.description, "bn");
             setTranslatedHi(hi);
@@ -83,7 +82,7 @@ export default function WeatherAlert() {
   if (loading) return <p>Loading weather alert...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  // ⚠️ No Alerts Found
+  // 🔔 No alert case
   if (!alert) {
     return (
       <div
@@ -98,12 +97,12 @@ export default function WeatherAlert() {
         <strong>✅ No weather alerts in your area right now.</strong>
         {noAlertTranslatedHi && (
           <p>
-            <em>🔁 Hindi: {noAlertTranslatedHi}</em>
+            <em>🔁 Hindi: {noAlertTranslatedHi} ✅</em>
           </p>
         )}
         {noAlertTranslatedBn && (
           <p>
-            <em>🔁 Bengali: {noAlertTranslatedBn}</em>
+            <em>🔁 Bengali: {noAlertTranslatedBn} ✅</em>
           </p>
         )}
       </div>
